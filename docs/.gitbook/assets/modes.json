@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BassBot API - Modes",
+    "version": "1.0.0",
+    "description": "Modes API endpoints for BassBot"
+  },
+  "servers": [
+    {
+      "url": "https://bassbot.fun"
+    }
+  ],
+  "paths": {
+    "/api/user/set-token-mode": {
+      "post": {
+        "summary": "\u2705 /api/user/set-token-mode",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ca": {
+                    "type": "string"
+                  },
+                  "mode_type": {
+                    "type": "string",
+                    "enum": [
+                      "volume",
+                      "cashout",
+                      "buythedip",
+                      "trendsetter"
+                    ]
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "Volume24h": {
+                        "type": "number"
+                      },
+                      "gasLimitPerTx": {
+                        "type": "number"
+                      },
+                      "allowablePriceImpact": {
+                        "type": "number"
+                      },
+                      "buyTotalVolume": {
+                        "type": "number"
+                      },
+                      "triggerPrice": {
+                        "type": "number"
+                      },
+                      "buyingPressure": {
+                        "type": "number"
+                      },
+                      "gasPrice": {
+                        "type": "number"
+                      },
+                      "defendPriceLevel": {
+                        "type": "number"
+                      },
+                      "buyingLimitPercents": {
+                        "type": "number"
+                      },
+                      "totalSellVolume": {
+                        "type": "number"
+                      },
+                      "sellOffPrice": {
+                        "type": "number"
+                      },
+                      "sellingLimitPercents": {
+                        "type": "number"
+                      },
+                      "target_price": {
+                        "type": "number"
+                      },
+                      "timing": {
+                        "type": "string"
+                      },
+                      "range": {
+                        "type": "number"
+                      },
+                      "regime": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "mode_type",
+                  "parameters",
+                  "ca"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/switch-mode": {
+      "post": {
+        "summary": "\u2705 /api/user/switch-mode",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ca": {
+                    "type": "string"
+                  },
+                  "mode_type": {
+                    "type": "string",
+                    "enum": [
+                      "volume",
+                      "cashout",
+                      "buythedip",
+                      "trendsetter"
+                    ]
+                  },
+                  "active_status": {
+                    "type": "string",
+                    "enum": [
+                      "run",
+                      "stop",
+                      "pause"
+                    ]
+                  }
+                },
+                "required": [
+                  "mode_type",
+                  "ca",
+                  "active_status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/get-token-mode": {
+      "get": {
+        "summary": "\u2705 /api/user/get-token-mode",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "ca",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mode_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "volume",
+                "cashout",
+                "buythedip",
+                "trendsetter"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

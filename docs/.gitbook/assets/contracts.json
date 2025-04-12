@@ -1,0 +1,312 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BassBot API - Contracts",
+    "version": "1.0.0",
+    "description": "Contracts API endpoints for BassBot"
+  },
+  "servers": [
+    {
+      "url": "https://bassbot.fun"
+    }
+  ],
+  "paths": {
+    "/api/user/tokens": {
+      "get": {
+        "summary": "\u2705 /api/user/tokens",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ca",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/user/add-token": {
+      "post": {
+        "summary": "\u2705 /api/user/add-token",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "ca": {
+                    "type": "string"
+                  },
+                  "chain": {
+                    "type": "string",
+                    "enum": [
+                      "chain",
+                      "evm-chain",
+                      "solana"
+                    ]
+                  },
+                  "dex": {
+                    "type": "string"
+                  },
+                  "pay_amount": {
+                    "type": "number"
+                  },
+                  "active_period": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "chain",
+                  "pay_amount",
+                  "user_id",
+                  "ca",
+                  "active_period",
+                  "dex"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/remove-contract": {
+      "post": {
+        "summary": "\u2705 /api/user/remove-contract",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "ca": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user_id",
+                  "ca"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/get-removed-contracts": {
+      "get": {
+        "summary": "\u2705 /api/user/get-removed-contracts",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/user/check-pay": {
+      "get": {
+        "summary": "\u2705 /api/user/check-pay",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ca",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/user/subscription": {
+      "get": {
+        "summary": "\u2705 /api/user/subscription",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ca",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/user/update-sub": {
+      "post": {
+        "summary": "\u2705 /api/user/update-sub",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "ca": {
+                    "type": "string"
+                  },
+                  "chain": {
+                    "type": "string"
+                  },
+                  "dex": {
+                    "type": "string"
+                  },
+                  "pay_amount": {
+                    "type": "number"
+                  },
+                  "active_period": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "chain",
+                  "pay_amount",
+                  "user_id",
+                  "ca",
+                  "active_period",
+                  "dex"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

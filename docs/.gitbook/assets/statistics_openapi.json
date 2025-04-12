@@ -1,0 +1,134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Statistics API",
+    "version": "1.0.0",
+    "description": "API for statistics functionality"
+  },
+  "servers": [
+    {
+      "url": "https://bassbot.fun",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/statistics/total": {
+      "post": {
+        "summary": "\u2705 /api/statistics/total",
+        "description": "Get total statistics for a contract",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userWallets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "contract": {
+                    "type": "string"
+                  },
+                  "dex": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userWallets",
+                  "contract",
+                  "dex"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          }
+        }
+      }
+    },
+    "/api/statistics/by-wallets": {
+      "post": {
+        "summary": "\u2705 /api/statistics/by-wallets",
+        "description": "Get statistics by wallets for a contract",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userWallets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "contract": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userWallets",
+                  "contract"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          }
+        }
+      }
+    }
+  }
+}

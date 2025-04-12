@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dispenser API",
+    "version": "1.0.0",
+    "description": "API for dispenser functionality"
+  },
+  "servers": [
+    {
+      "url": "https://bassbot.fun",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/dispenser": {
+      "post": {
+        "summary": "\u2705 /api/dispenser",
+        "description": "Dispense tokens to multiple recipients",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "network": {
+                    "type": "string",
+                    "enum": [
+                      "solana"
+                    ]
+                  },
+                  "donorWallet": {
+                    "type": "string"
+                  },
+                  "recipients": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "quantityFrom": {
+                    "type": "number"
+                  },
+                  "quantityTo": {
+                    "type": "number"
+                  },
+                  "equal": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "network",
+                  "donorWallet",
+                  "recipients",
+                  "quantityFrom",
+                  "quantityTo",
+                  "equal"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "runId": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "runId",
+                    "token"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        }
+      }
+    }
+  }
+}

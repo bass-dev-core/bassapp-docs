@@ -1,0 +1,155 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BassBot API - Wallets",
+    "version": "1.0.0",
+    "description": "Wallets API endpoints for BassBot"
+  },
+  "servers": [
+    {
+      "url": "https://bassbot.fun"
+    }
+  ],
+  "paths": {
+    "/api/user/wallets": {
+      "get": {
+        "summary": "\u2705 /api/user/wallets",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ca",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/user/generate-keys": {
+      "post": {
+        "summary": "\u2705 /api/user/generate-keys (any EVM or solana)",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "ca": {
+                    "type": "string"
+                  },
+                  "chain": {
+                    "type": "string"
+                  },
+                  "count_wallets": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "chain",
+                  "user_id",
+                  "count_wallets",
+                  "ca"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/send-data": {
+      "post": {
+        "summary": "\u2705 /api/user/send-data",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad Request - The request was invalid or cannot be served."
+          },
+          "404": {
+            "description": "Not Found - The requested resource was not found."
+          },
+          "500": {
+            "description": "Internal Server Error - Something went wrong on the server."
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "ca": {
+                    "type": "string"
+                  },
+                  "private_keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "chain": {
+                    "type": "string"
+                  },
+                  "passphrase": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chain",
+                  "user_id",
+                  "ca",
+                  "private_keys",
+                  "passphrase"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
