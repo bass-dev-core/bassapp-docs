@@ -1,5 +1,5 @@
 ---
-description: This section describes the OpenAPI specification used in the backend.
+description: This section describes the OpenAPI specification used in the backend
 ---
 
 # 📡 API Reference

@@ -15,6 +15,7 @@
 * [💳 Wallets](how-to-use/wallets.md)
 * [⚙️ Modes](how-to-use/modes.md)
 * [📊 Stats](how-to-use/stats.md)
+* [⚠️ Usage Advice](how-to-use/usage-advice.md)
 * [🔀 Private Multisender](how-to-use/sender.md)
 
 ***
